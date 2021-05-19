@@ -2,6 +2,6 @@
 #deploy_local.sh
 
 mkdir -p test
-cp HelloWorld.class test
+cp helloWorld.class test
 cd test
-java HelloWorld
+java helloWorld

@@ -2,8 +2,8 @@
 #deploy_remote.sh
 
 #Je mets la chaine de connexion de ma machine distance dans une variable
-MACHINE_DESTINATION=ec2-user@ec2-52-26-143-177.us-west-2.compute.amazonaws.com
-PATH_SECRET_KEY=/secrets/kp-Rose.pem
+MACHINE_DESTINATION="ec2-user@ec2-52-26-143-177.us-west-2.compute.amazonaws.com"
+PATH_SECRET_KEY="/secrets/kp-Rose.pem"
 
 #On installe Java sur la machine distante 
 #ne pas oublier de mettre -o StrictHostKeyChecking=no pour ssh afin d'être non-interactif sur l'acception de la vérification de host

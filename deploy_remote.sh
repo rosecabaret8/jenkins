@@ -1,7 +1,7 @@
 #!/bin/bash
 #deploy_remote.sh
 java -version
-if [[ $? !=0 ]] 
+if [[ $? != 0 ]] 
 then 
   sudo amazon-linux-extras install -y java-openjdk11 
 fi

@@ -1,12 +1,12 @@
 ---
-- name: Deploy Java program
+- name: Deploy Docker program
   hosts: all
   become: yes
 
   tasks:
 #    - name: Execute the command in remote shell; stdout goes to the specified file on the remote.
 #      shell: echo "HelloWorld" > log.txt
-    - name: Installation de Java
+    - name: Installation de docker
       shell: amazon-linux-extras install -y docker
       register: result_install
 

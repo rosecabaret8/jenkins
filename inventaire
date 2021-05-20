@@ -1,2 +1,2 @@
 [myserver]
-172.31.1.89 ansible_ssh_user=ec2-user ansible_ssh_private_key_file=/secrets/kp-Rose.pem ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+172.31.1.49 ansible_ssh_user=ec2-user ansible_ssh_private_key_file=/secrets/kp-Rose.pem ansible_ssh_common_args='-o StrictHostKeyChecking=no'

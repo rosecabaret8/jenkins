@@ -1,13 +1,11 @@
 ---
-- name: Deploy Java programm
+- name: Deploy Java program
   hosts: all
   become: yes
 
   tasks:
-#    - name: Execute the command in remote shell; stdout goes to the specified file on the remote.
-#      shell: echo "HelloWorld" > log.txt
-    - name: Installation de docker
-      shell: amazon-linux-extras install -y docker
+    - name: Installation de Docker et démarrage de docker
+      shell: amazon-linux-extras install -y docker && systemctl start docker
       register: result_install
 
     - debug:
@@ -26,10 +24,24 @@
         src: helloWorld.class
         dest: /app
         mode: 0644
-    - name: On execute le fichier helloWorld.class
-      shell: cd /app && java helloWorld
+ 
+    - name: "Copier (faire un scp) le fichier local Dockerfile sur le dossier remote /app"
+      copy:
+        src: Dockerfile
+        dest: /app
+        mode: 0644
+
+    - name: On genere l'image docker, on l'appelle formation/java:1.0
+      shell: cd /app && docker build -t formation/java:1.0 .
       #On prend tout ce qui est du stdout et on le met dans la variable result
       register: result
+    - debug:
+        var=result
 
+
+    - name: On execute le contenur de l'image docker formation/java:1.0
+      shell: docker run --rm --name conteneur_app formation/java:1.0
+      #On prend tout ce qui est du stdout et on le met dans la variable result
+      register: result
     - debug:
         var=result
